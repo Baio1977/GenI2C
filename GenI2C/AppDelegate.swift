@@ -142,7 +142,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate {
         openPanel.canChooseFiles = true
         openPanel.allowedFileTypes = ["dsl"]
         openPanel.allowsMultipleSelection = false
-        openPanel.beginSheetModal(for: mainWindow, completionHandler: {result in
+        openPanel.orderFrontRegardless()
+        openPanel.beginSheetModal(for: window, completionHandler: {result in
             if (result == NSApplication.ModalResponse.OK)
             {
                 let path:NSURL = openPanel.urls[0] as NSURL
