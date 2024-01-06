@@ -11,10 +11,12 @@ import Foundation
 func GenReadme (Rename: String) {
     print("GenReadme()")
     var Readme:String = ""
-    Readme += NSLocalizedString("1. Put VoodooI2C and the Satellite into Clover/Kexts/Other\n", comment: "")
-    Readme += NSLocalizedString("2. Add rename(s) to Clover config.plist\n\n", comment: "")
+    Readme += NSLocalizedString("1. Opencore Bootloader : Put VoodooI2C and the Satellite into EFI/OC/Kext , generate rename(s) with (https://github.com/corpnewt/ACPIRename) and insert in config.plist\n", comment: "")
     Readme += Rename
-    Readme += NSLocalizedString("\n\n3. Place SSDT aml files into Clover/ACPI/patched", comment: "")
+    Readme += NSLocalizedString("2. Clover Bootloader : Put VoodooI2C and the Satellite into Clover/Kexts/Other , place SSDT aml files into Clover/ACPI/patched add insert rename(s) in config.plist\n", comment: "")
+    Readme += Rename
+    Readme += NSLocalizedString("\n\n3.\n\n", comment: "")
+    
     let path:String = FolderPath + "/Readme.txt"
     try! FileManager.default.createDirectory(atPath: FolderPath, withIntermediateDirectories: true, attributes: nil)
     if FileManager.default.fileExists(atPath: path) {
