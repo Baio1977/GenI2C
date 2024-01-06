@@ -5,29 +5,30 @@
   Created by 梁怀宇 on 2019/6/15.
   Copyright © 2019 梁怀宇. All rights reserved.
 */
-"OK" = "OK";
-"Exit" = "Exit";
-"There is no " = "There is no ";
-" in your DSDT. Please input again or exit" = " in your DSDT. Please input again or exit";
-"Input again" = "Input again";
-"No native APIC found" = "No native APIC found";
-"Failed to extract APIC Pin. Please input your APIC Pin in Hex, and start with \"0x\"" = "Failed to extract APIC Pin. Please input your APIC Pin in Hex, and start with \"0x\"";
-"Failed to extract I2C Device Path, please select your I2C Device Path:" = "Failed to extract I2C Device Path, please select your I2C Device Path:";
-"Multiple " = "Multiple ";
-" found in the DSDT\nWhich Path is the Correct one?" = " found in the DSDT\nWhich Path is the Correct one?";
-"Polling" = "Polling";
-"Interrupt(APIC)" = "Interrupt(APIC)";
-"Interrupt(GPIO)" = "Interrupt(GPIO)";
-"Loaded" = "Loaded";
-"Not Loaded" = "Not Loaded";
-"nil" = "nil";
-"APIC Pin should be between 0x18 and 0x77" = "APIC Pin should be between 0x18 and 0x77";
-"Renamed _CRS detected!" = "Renamed _CRS detected!";
-"Please use an error-corrected vanilla DSDT instead!" = "Please use an error-corrected vanilla DSDT instead!";
-"Warning" = "Warning";
-"This is not a I2C Device!" = "This is not a I2C Device!";
-"Report your bug" = "Report your bug";
-"Please open a new issue on Github" = "Please open a new issue on Github";
-"1. Put VoodooI2C and the Satellite into Clover/Kexts/Other\n" = "1. Put VoodooI2C and the Satellite into Clover/Kexts/Other\n";
-"2. Add rename(s) to Clover config.plist\n\n" = "2. Add rename(s) to Clover config.plist\n\n";
-"\n\n3. Place SSDT aml files into Clover/ACPI/patched" = "\n\n3. Place SSDT aml files into Clover/ACPI/patched";
+"OK";
+"Exit";
+"No Device Found";
+"There is no";
+" in your DSDT. Please input again or exit";
+"Input again";
+"No native APIC found";
+"Failed to extract APIC Pin. Please input your APIC Pin in Hex, and start with \"0x\"";
+"Failed to extract I2C Device Path, please select your I2C Device Path:";
+"Multiple";
+" found in the DSDT\nWhich Path is the Correct one?";
+"Interrupt(APIC)";
+"Interrupt(GPIO)";
+"Loaded";
+"Not Loaded";
+"nil";
+"APIC Pin should be between 0x18 and 0x77";
+"Renamed _CRS detected!";
+"Please use an error-corrected vanilla DSDT instead!";
+"Warning";
+"This is not a I2C Device!";
+"Report your bug";
+"Please open a new issue on Github";
+"1. Opencore Bootloader : Put VoodooI2C and the Satellite into EFI/OC/Kext , generate rename(s) with (https://github.com/corpnewt/ACPIRename) and insert in config.plist\n";
+"2. Clover Bootloader : Put VoodooI2C and the Satellite into Clover/Kexts/Other , place SSDT aml files into Clover/ACPI/patched add insert rename(s) in config.plist\n";
+"3. \n\n3.\n\n";
+
