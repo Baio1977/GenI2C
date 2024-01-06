@@ -1596,10 +1596,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate {
     @IBAction func VoodooI2C(_ sender: Any) {
         NSWorkspace.shared.open(URL(string: "https://github.com/VoodooI2C/VoodooI2C")!)
     }
-    @IBAction func Guide(_ sender: Any) {
+    @IBAction func OCLittleTraslated(_ sender: Any) {
         NSWorkspace.shared.open(URL(string: "https://github.com/5T33Z0/OC-Little-Translated")!)
     }
-    @IBAction func Donate(_ sender: Any) {
+    @IBAction func OCAT(_ sender: Any) {
         NSWorkspace.shared.open(URL(string: "https://github.com/ic005k/OCAuxiliaryTools")!)
     }
 }
