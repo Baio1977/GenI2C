@@ -51,7 +51,6 @@
 		8B3271C4229A5E3E005FCBB7 /* GenI2CUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenI2CUITests.swift; sourceTree = "<group>"; };
 		8B3271C6229A5E3E005FCBB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B355DAB22B4D26700BB042B /* iasl */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = iasl; sourceTree = "<group>"; };
-		8B355DB222B524C800BB042B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		8B355DB422B524F100BB042B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8B355DB522B5400100BB042B /* maclog */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = maclog; sourceTree = "<group>"; };
 		8B511CC022C9B01E0082ED70 /* GenReadme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenReadme.swift; sourceTree = "<group>"; };
@@ -327,7 +326,6 @@
 		8B355DB322B524C800BB042B /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				8B355DB222B524C800BB042B /* zh-Hans */,
 				8B355DB422B524F100BB042B /* en */,
 			);
 			name = Localizable.strings;
@@ -464,7 +462,8 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.3.2;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 1.3.3.b1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lhy.GenI2C;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -482,7 +481,8 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.3.2;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 1.3.3.b1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lhy.GenI2C;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
