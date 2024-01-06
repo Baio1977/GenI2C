@@ -1,15 +1,13 @@
-# GenI2C
+[![](https://img.shields.io/badge/EFI-Release-informational?style=flat&logo=apple&logoColor=white&color=9debeb)](https://github.com/Baio1977/EFI-Varie-Hackintosh)
+[![](https://img.shields.io/badge/Telegram-HackintoshLifeIT-informational?style=flat&logo=telegram&logoColor=white&color=5fb659)](https://t.me/HackintoshLife_it)
 
-[![Build Status](https://dev.azure.com/UndefinedSS/GenI2C/_apis/build/status/williambj1.GenI2C?branchName=master)](https://dev.azure.com/UndefinedSS/GenI2C/_build/latest?definitionId=1&branchName=master)
-[![Release](https://img.shields.io/github/release/williambj1/GenI2C.svg)](https://github.com/williambj1/GenI2C/releases)
-[![Language](https://img.shields.io/github/languages/top/williambj1/GenI2C.svg?color=orange&label=swift)](https://github.com/williambj1/GenI2C)
-[![Repo Size](https://img.shields.io/github/repo-size/williambj1/GenI2C.svg?color=blueviolet)](https://github.com/williambj1/GenI2C)
-[![Issues](https://img.shields.io/github/issues/williambj1/GenI2C.svg)](https://github.com/williambj1/GenI2C/issues)
-[![Testers](https://img.shields.io/badge/Testers-Welcome-brightgreen.svg)](https://github.com/williambj1/GenI2C)
+## Download
+
+👉 [![Release](https://img.shields.io/github/release/Baio1977/GenI2C.svg)](https://github.com/Baio1977/GenI2C/releases)
+
+# GenI2C_Refresh
 
 Generate SSDT hotpatches for your Touchable Device and get ready for VoodooI2C! 😜
-
-**[简体中文](https://github.com/williambj1/GenI2C/wiki/Readme-CN)**
 
 ## Terms of Use
 
@@ -20,10 +18,6 @@ DO NOT REQUEST ANY SUPPORT FROM GITHUB ISSUES IN VoodooI2C OR THE VoodooI2C GITT
 Automated patches are not granted to always correct, please open an issue if you descovered a bug, pull requests will be highly appreciated.
 
 This software is released under the [MIT License](/LICENSE)
-
-## Download
-
-👉 [![Release](https://img.shields.io/github/release/williambj1/GenI2C.svg)](https://github.com/williambj1/GenI2C/releases)
 
 ## Features
 
@@ -37,7 +31,6 @@ This software is released under the [MIT License](/LICENSE)
 - SSDT Generation
   - Using **External** references to maintain APIC/GPIO Pin Bios injection
   - Generate I2C Bus Speed Patch
-  - ~~Generate Skylake I2C Controller Patch~~ (In development🚧)
   - Generate GPIO Pin when manually pinning is required
   - Polling mode patch supported (VoodooI2CHID only)
 
@@ -51,7 +44,7 @@ This software is released under the [MIT License](/LICENSE)
   - Check Magic Trackpad 2 Simulator Engine Status
   - Analyze VoodooI2C Logs
 
-## Credits
+## GenI2C Credits
 
 - Bat.bat [(@williambj1)](https://github.com/williambj1) for the idea and the **Visual Basic .Net** part of the project
 - DogAndPot [(@DogAndPot)](https://github.com/DogAndPot) for the **Swift** part of the project
@@ -61,12 +54,8 @@ This software is released under the [MIT License](/LICENSE)
 - Steve Zheng [(@stevezhengshiqi)](https://github.com/stevezhengshiqi) for testing and bug reporting
 - http://patorjk.com for the amazing ASCII Art font `Impossible`
 
-## Donation
+## GenI2C_Refresh Credits
 
-**Writing Code and Debugging are not easy, if you appreciate my work, please buy me a coffee. It's not required but will be highly appreciated😋😋😋.**
-
-<details>
-<summary>WeChat Pay & Alipay</summary>
-<img src="https://raw.githubusercontent.com/williambj1/GenI2C/Doc/img/Donation/DAPWP.jpg" align=center>
-<img src="https://raw.githubusercontent.com/williambj1/GenI2C/Doc/img/Donation/DAPAP.jpg" align=center>
-</details>
+- Baio1977 [(@Baio1977)](https://github.com/Baio1977) for resuming development and compatibility with Opencore Bootloader
+- Lorys89 [(@Lorys89)](https://github.com/Lorys89) for development, support and immense developer qualities
+- Massimiliano [(@mbarbierato)](https://github.com/mbarbierato) for development, support and various code fixes
