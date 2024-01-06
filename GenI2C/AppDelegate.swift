@@ -10,8 +10,8 @@ import Cocoa
 
 var CPUInfo:String = "", NativeDeviceName:String = "", NativePin = "", isVooLoaded:Bool = false, isNameFound:Bool = false, isPinFound:Bool = false
 var TPAD:String = "", Device:String = "", DSDTFile:String = "", Paranthesesopen:String = "", Paranthesesclose:String = "", DSDTLine:String = "", scope:String = "", Spacing:String = "", APICNAME:String = "", SLAVName:String = "", GPIONAME:String = "", APICPin:String = "", HexTPAD:String = "", BlockBus:String = "", HexBlockBus:String = "", FolderPath:String = "\(NSHomeDirectory())/desktop/I2C-PATCH", BlockSSDT = [String](repeating: "", count: 16), GPI0SSDT = [String](repeating: "", count: 16), ScopeSelect:String = "", RenameFile:String = "", HexI2C:String = "", HexI2X:String = ""
-var ManualGPIO = [String](repeating: "", count: 9), ManualAPIC = [String](repeating: "", count: 7),  ManualSPED = [String](repeating: "", count: 2), CRSInfo = [String](), CNL_H_SPED = [String](repeating: "", count: 44), Code = [String](), lines = [String](), IfLLess = [String](repeating: "", count: 6), IfLEqual = [String](repeating: "", count: 6), If2Brackets = [String](repeating: "", count: 6), MultiScope = [String](repeating: "", count: 6)
-var Matched:Bool = false, CRSPatched:Bool = false, ExUSTP:Bool = false, ExSSCN:Bool = false, ExFMCN:Bool = false, ExAPIC:Bool = false, ExSLAV:Bool = false, ExGPIO:Bool = false, CatchSpacing:Bool = false, APICNameLineFound:Bool = false, SLAVNameLineFound:Bool = false, GPIONameLineFound:Bool = false, InterruptEnabled:Bool = false, PollingEnabled:Bool = false, Hetero:Bool = false, BlockI2C:Bool = false, ExI2CM:Bool = false, ExBADR:Bool = false, ExHID2:Bool = false, LLess:Bool = false, LEqual:Bool = false, If2BracketsBool:Bool = false, MultiTPAD:Bool = false, MultiScopeBool:Bool = false
+var ManualGPIO = [String](repeating: "", count: 9), ManualAPIC = [String](repeating: "", count: 7),  ManualSPED = [String](repeating: "", count: 2), CRSInfo = [String](), CNL_H_SPED = [String](repeating: "", count: 47), Code = [String](), lines = [String](), IfLLess = [String](repeating: "", count: 6), IfLEqual = [String](repeating: "", count: 6), If2Brackets = [String](repeating: "", count: 6), MultiScope = [String](repeating: "", count: 6)
+var Matched:Bool = false, CRSPatched:Bool = false, ExUSTP:Bool = false, ExSSCN:Bool = false, ExFMCN:Bool = false, ExAPIC:Bool = false, ExSLAV:Bool = false, ExGPIO:Bool = false, CatchSpacing:Bool = false, APICNameLineFound:Bool = false, SLAVNameLineFound:Bool = false, GPIONameLineFound:Bool = false, InterruptEnabled:Bool = false, PollingEnabled:Bool = false, Hetero:Bool = false, BlockI2C:Bool = false, ExI2CM:Bool = false, ExBADR:Bool = false, ExADR0:Bool = false,ExHID2:Bool = false, ExTPID:Bool = false, ExTPDF:Bool = false, LLess:Bool = false, LEqual:Bool = false, If2BracketsBool:Bool = false, MultiTPAD:Bool = false, MultiScopeBool:Bool = false
 var line:Int = 0, i:Int = 0, n:Int = 0, total:Int = 0, APICPinLine:Int = 0, GPIOPinLine:Int = 0, APICPIN:Int = 0, GPIOPIN:Int = 0, GPIOPIN2:Int = 0, GPIOPIN3:Int = 0, APICNameLine:Int = 0, SLAVNameLine:Int = 0, GPIONAMELine:Int = 0, CheckConbLine:Int = 0, Choice:Int = -1, preChoice:Int = -1, ScopeLine:Int = 0, count:Int = 0, CRSLocation:Int = 0, CheckSLAVLocation:Int = 0, CPUChoice:Int = -1, MultiScopeCount:Int = 0, MultiTPADLineCount = [Int](repeating: 0, count: 6), MultiTPADLineCountIndex:Int = 0, MultiTPADUSRSelect:Int = 0, TargetTPAD:Int = 0
 
 @NSApplicationMain
@@ -543,8 +543,17 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate {
             if CRSInfo[CRSLine].contains("BADR") {
                 ExBADR = true
             }
+            if CRSInfo[CRSLine].contains("ADR0") {
+                ExADR0 = true
+            }
             if CRSInfo[CRSLine].contains("HID2") {
                 ExHID2 = true
+            }
+            if CRSInfo[CRSLine].contains("TPID") {
+                ExTPID = true
+            }
+            if CRSInfo[CRSLine].contains("TPDF") {
+                ExTPDF = true
             }
         }
         if SLAVNameLineFound == false {
@@ -674,19 +683,19 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate {
             if CRSPatched == false {
                 verbose(text: "Error! No _CRS Patch Applied!")
             }
-            GPI0SSDT[0] = #"/* "#
-            GPI0SSDT[1] = #" * Find _STA:          5F 53 54 41"#
-            GPI0SSDT[2] = #" * Replace XSTA:       58 53 54 41"#
-            GPI0SSDT[3] = #" * Target Bridge GPI0: 47 50 49 30"#
-            GPI0SSDT[4] = #" */"#
-            GPI0SSDT[5] = "DefinitionBlock(\"\", \"SSDT\", 2, \"hack\", \"GPI0\", 0)"
-            GPI0SSDT[6] = #"{"#
-            GPI0SSDT[7] = #"    External(_SB.PCI0.GPI0, DeviceObj)"#
-            GPI0SSDT[8] = #"    Scope (_SB.PCI0.GPI0)"#
-            GPI0SSDT[9] = #"    {"#
-            GPI0SSDT[10] = #"        Method (_STA, 0, NotSerialized)"#
-            GPI0SSDT[11] = #"        {"#
-            GPI0SSDT[12] = #"            Return (0x0F)"#
+            GPI0SSDT[0] = #"/*"#
+            GPI0SSDT[1] = #" * Opencore add SSDT-GPI0 into EFI/OC/ACPI and Integrate in Config.plist. Clover add SSDT-GPI0 into Clover EFI/Clover/ACPI/Patched"#
+            GPI0SSDT[2] = #" */"#
+            GPI0SSDT[3] = "DefinitionBlock(\"\", \"SSDT\", 2, \"hack\", \"GPI0\", 0)"
+            GPI0SSDT[4] = #"{"#
+            GPI0SSDT[5] = #"    External (GPEN, FieldUnitObj)"#
+            GPI0SSDT[6] = #"    External (GPHD, FieldUnitObj)"#
+            GPI0SSDT[7] = #"    Scope (\)"#
+            GPI0SSDT[8] = #"    {"#
+            GPI0SSDT[9] = #"        If (_OSI ("Darwin"))"#
+            GPI0SSDT[10] = #"        {"#
+            GPI0SSDT[11] = #"            GPEN = One"#
+            GPI0SSDT[12] = #"            GPHD = Zero"#
             GPI0SSDT[13] = #"        }"#
             GPI0SSDT[14] = #"    }"#
             GPI0SSDT[15] = #"}"#
@@ -829,18 +838,19 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate {
                     FileManager.default.createFile(atPath: path, contents: nil, attributes: nil)
                 }
                 
-                var RenameCRS = [String](repeating: "", count: 4)
+                var RenameCRS = [String](repeating: "", count: 5)
                 RenameCRS[0] = "/*"
-                RenameCRS[1] = " * Find _CRS:          5F 43 52 53"
-                RenameCRS[2] = " * Replace XCRS:       58 43 52 53"
-                RenameCRS[3] = " * Target Bridge " + TPAD + ": " + HexTPAD
+                RenameCRS[1] = " * Add Rename EFI/Clover/config.plist\n"
+                RenameCRS[2] = " * Find _CRS:          5F 43 52 53"
+                RenameCRS[3] = " * Replace XCRS:       58 43 52 53"
+                RenameCRS[4] = " * Target Bridge " + TPAD + ": " + HexTPAD
                 
                 var RenameUSTP = [String](repeating: "", count: 3)
                 RenameUSTP[0] = " * "
                 RenameUSTP[1] = " * Find USTP:          55 53 54 50 08"
                 RenameUSTP[2] = " * Replace XSTP:       58 53 54 50 08"
                 
-                var Filehead = [String](repeating: "", count: 33)
+                var Filehead = [String](repeating: "", count: 36)
                 Filehead[0] = #"DefinitionBlock("", "SSDT", 2, "hack", "I2Cpatch", 0)"#
                 Filehead[1] = "{"
                 Filehead[2] = "    External(_SB.PCI0.I2C" + scope + "." + TPAD + ", DeviceObj)"
@@ -881,14 +891,23 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate {
                 if ExBADR && ExI2CM == false {
                     Filehead[28] = "    External(_SB.PCI0.I2C" + scope + "." + TPAD + ".BADR, IntObj)"
                 }
+                if ExADR0 {
+                    Filehead[29] = "    External(_SB.PCI0.I2C" + scope + "." + TPAD + ".ADR0, IntObj)"
+                }
                 if ExHID2 {
-                    Filehead[29] = "    External(_SB.PCI0.I2C" + scope + "." + TPAD + ".HID2, IntObj)"
+                    Filehead[30] = "    External(_SB.PCI0.I2C" + scope + "." + TPAD + ".HID2, IntObj)"
+                }
+                if ExTPID {
+                    Filehead[31] = "    External(_SB.PCI0.I2C" + scope + "." + TPAD + ".TPID, IntObj)"
+                }
+                if ExTPDF {
+                    Filehead[32] = "    External(_SB.PCI0.I2C" + scope + "." + TPAD + ".TPDF, IntObj)"
                 }
                 if ExUSTP {
-                    Filehead[30] = "    Name (USTP, One)"
+                    Filehead[33] = "    Name (USTP, One)"
                 }
-                Filehead[31] = "    Scope(_SB.PCI0.I2C" + scope + "." + TPAD + ")"
-                Filehead[32] = "    {"
+                Filehead[34] = "    Scope(_SB.PCI0.I2C" + scope + "." + TPAD + ")"
+                Filehead[35] = "    {"
                 
                 var fileContent:String = ""
                 for Genindex in 0..<RenameCRS.count {
@@ -943,10 +962,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate {
         }
         RenameLabel.string += "++++++++++++++++++++++++++++++++++++++\n\n"
         if InterruptEnabled || PollingEnabled {
+            RenameLabel.string += "    Add Rename EFI/Clover/config.plist\n"
             RenameLabel.string += "    Find _CRS:          5F 43 52 53\n"
             RenameLabel.string += "    Replace XCRS:       58 43 52 53\n"
             RenameLabel.string += "    Target Bridge \(TPAD): \(HexTPAD)\n\n"
             if InterruptEnabled && (APICPIN > 47 || (APICPIN == 0 && ExGPIO && ExAPIC)) {
+                RenameLabel.string += "    Add Rename EFI/Clover/config.plist\n"
                 RenameLabel.string += "    Find _STA:          5F 53 54 41\n"
                 RenameLabel.string += "    Replace XSTA:       58 53 54 41\n"
                 RenameLabel.string += "    Target Bridge GPI0: 47 50 49 30\n\n"
@@ -959,6 +980,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate {
                 RenameLabel.string += "    Replace XSCN:       58 53 43 4E\n"
             }
         } else if BlockI2C {
+            RenameLabel.string += "    Add Rename EFI/Clover/config.plist\n"
             RenameLabel.string += "    Find _STA:          5F 53 54 41\n"
             RenameLabel.string += "    Replace XSTA:       58 53 54 41\n"
             RenameLabel.string += "    Target Bridge \(BlockBus): \(HexBlockBus)\n\n"
@@ -997,42 +1019,42 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate {
             CNL_H_SPED[4] = #"DefinitionBlock("", "SSDT", 2, "hack", "I2C-SPED", 0)"#
             CNL_H_SPED[5] = "{"
             CNL_H_SPED[6] = "    External(_SB_.PCI0.I2C" + scope + ", DeviceObj)"
-            CNL_H_SPED[7] = "    External(FMD" + scope + ", IntObj)"
-            CNL_H_SPED[8] = "    External(FMH" + scope + ", IntObj)"
-            CNL_H_SPED[9] = "    External(FML" + scope + ", IntObj)"
-            CNL_H_SPED[10] = "    External(SSD" + scope + ", IntObj)"
-            CNL_H_SPED[11] = "    External(SSH" + scope + ", IntObj)"
-            CNL_H_SPED[12] = "    External(SSL" + scope + ", IntObj)"
-            CNL_H_SPED[13] = "    Scope(_SB.PCI0.I2C\(scope))"
-            CNL_H_SPED[14] = "    {"
-            CNL_H_SPED[15] = "        Method (PKGX, 3, Serialized)"
-            CNL_H_SPED[16] = "        {"
-            CNL_H_SPED[17] = "            Name (PKG, Package (0x03)"
-            CNL_H_SPED[18] = "            {"
-            CNL_H_SPED[19] = "                Zero, "
-            CNL_H_SPED[20] = "                Zero, "
-            CNL_H_SPED[21] = "                Zero"
-            CNL_H_SPED[22] = "            })"
-            CNL_H_SPED[23] = "        Store (Arg0, Index (PKG, Zero))"
-            CNL_H_SPED[24] = "        Store (Arg1, Index (PKG, One))"
-            CNL_H_SPED[25] = "        Store (Arg2, Index (PKG, 0x02))"
-            CNL_H_SPED[26] = "        Return (PKG)"
-            CNL_H_SPED[27] = "        }"
-            CNL_H_SPED[28] = "        Method (SSCN, 0, NotSerialized)"
-            CNL_H_SPED[29] = "        {"
-            CNL_H_SPED[30] = "            Return (PKGX (SSH" + scope + ", SSL" + scope + ", SSD" + scope + "))"
-            CNL_H_SPED[31] = "        }"
-            CNL_H_SPED[32] = "        Method (FMCN, 0, NotSerialized)"
-            CNL_H_SPED[33] = "        {"
-            CNL_H_SPED[34] = "            Name (PKG, Package (0x03)"
-            CNL_H_SPED[35] = "            {"
-            CNL_H_SPED[36] = "                0x0101, "
-            CNL_H_SPED[37] = "                0x012C, "
-            CNL_H_SPED[38] = "                0x62"
-            CNL_H_SPED[39] = "            })"
-            CNL_H_SPED[40] = "            Return (PKG)"
-            CNL_H_SPED[41] = "        }"
-            CNL_H_SPED[42] = "    }"
+            CNL_H_SPED[7] = "    External(SSD" + scope + ", IntObj)"
+            CNL_H_SPED[8] = "    External(SSH" + scope + ", IntObj)"
+            CNL_H_SPED[9] = "    External(SSL" + scope + ", IntObj)"
+            CNL_H_SPED[10] = "    Scope(_SB.PCI0.I2C\(scope))"
+            CNL_H_SPED[11] = "    {"
+            CNL_H_SPED[12] = #"       If (_OSI ("Darwin"))"#
+            CNL_H_SPED[13] = "        {"
+            CNL_H_SPED[14] = "            Method (PKGX, 3, Serialized)"
+            CNL_H_SPED[15] = "            {"
+            CNL_H_SPED[16] = "                Name (PKG, Package (0x03)"
+            CNL_H_SPED[17] = "                {"
+            CNL_H_SPED[18] = "                    Zero, "
+            CNL_H_SPED[19] = "                    Zero, "
+            CNL_H_SPED[20] = "                    Zero"
+            CNL_H_SPED[21] = "                })"
+            CNL_H_SPED[22] = "                Store (Arg0, Index (PKG, Zero))"
+            CNL_H_SPED[23] = "                Store (Arg1, Index (PKG, One))"
+            CNL_H_SPED[24] = "                Store (Arg2, Index (PKG, 0x02))"
+            CNL_H_SPED[25] = "                Return (PKG)"
+            CNL_H_SPED[26] = "           }"
+            CNL_H_SPED[27] = "           Method (SSCN, 0, NotSerialized)"
+            CNL_H_SPED[28] = "           {"
+            CNL_H_SPED[29] = "               Return (PKGX (SSH" + scope + ", SSL" + scope + ", SSD" + scope + "))"
+            CNL_H_SPED[30] = "           }"
+            CNL_H_SPED[31] = "           Method (FMCN, 0, NotSerialized)"
+            CNL_H_SPED[32] = "           {"
+            CNL_H_SPED[33] = "               Name (PKG, Package (0x03)"
+            CNL_H_SPED[34] = "               {"
+            CNL_H_SPED[35] = "                   0x0101, "
+            CNL_H_SPED[36] = "                   0x012C, "
+            CNL_H_SPED[37] = "                   0x62"
+            CNL_H_SPED[38] = "               })"
+            CNL_H_SPED[39] = "               Return (PKG)"
+            CNL_H_SPED[40] = "           }"
+            CNL_H_SPED[41] = "       }"
+            CNL_H_SPED[42] = "   }"
             CNL_H_SPED[43] = "}"
             
             let path:String = FolderPath + "/SSDT-I2C\(scope)-SPED.dsl"
@@ -1351,7 +1373,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate {
     
     @IBAction func Feedback(_ sender: Any) {
         Pop_up(messageText: NSLocalizedString("Report your bug", comment: ""), informativeText: NSLocalizedString("Please open a new issue on Github", comment: ""))
-        NSWorkspace.shared.open(URL(string: "https://github.com/williambj1/GenI2C/issues")!)
+        NSWorkspace.shared.open(URL(string: "https://github.com/Baio1977/GenI2C/issues")!)
     }
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
@@ -1569,16 +1591,16 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate {
     }
     
     @IBAction func Github(_ sender: Any) {
-        NSWorkspace.shared.open(URL(string: "https://github.com/williambj1/GenI2C")!)
+        NSWorkspace.shared.open(URL(string: "https://github.com/Baio1977/GenI2C")!)
     }
     @IBAction func VoodooI2C(_ sender: Any) {
-        NSWorkspace.shared.open(URL(string: "https://github.com/alexandred/VoodooI2C")!)
+        NSWorkspace.shared.open(URL(string: "https://github.com/VoodooI2C/VoodooI2C")!)
     }
     @IBAction func Guide(_ sender: Any) {
-        //NSWorkspace.shared.open(URL(string: "https://github.com/alexandred/VoodooI2C")!)
+        NSWorkspace.shared.open(URL(string: "https://github.com/5T33Z0/OC-Little-Translated")!)
     }
     @IBAction func Donate(_ sender: Any) {
-        NSWorkspace.shared.open(URL(string: "https://github.com/williambj1/GenI2C#donation")!)
+        NSWorkspace.shared.open(URL(string: "https://github.com/ic005k/OCAuxiliaryTools")!)
     }
 }
 
