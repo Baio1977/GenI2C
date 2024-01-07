@@ -16,8 +16,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: actions/checkout@v3
-      - run: xcodebuild -scheme 'GenI2C' -configuration Debug -arch x86_64
-      - run: xcodebuild -scheme 'GenI2C' -configuration Release -arch x86_64
+      - run: xcodebuild -configuration Debug -arch x86_64
+      - run: xcodebuild -configuration Release -arch x86_64
 
       - name: Upload to Artifacts
         uses: actions/upload-artifact@v3
