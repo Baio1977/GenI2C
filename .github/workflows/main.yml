@@ -10,14 +10,14 @@ on:
 jobs:
   build:
     name: Build
-    runs-on: macos-11
+    runs-on: macos-latest
     env:
       JOB_TYPE: BUILD
     steps:
       - uses: actions/checkout@v3
       - uses: actions/checkout@v3
       - run: xcodebuild -configuration Debug
-      - run: xcodebuild -configuration Release
+      - run: xcodebuild -configuration Release BUILD_LIBRARY_FOR_DISTRIBUTION=YES
 
       - name: Upload to Artifacts
         uses: actions/upload-artifact@v3
