@@ -17,8 +17,7 @@ func DiagnosisCPU() -> Bool {
     //CPU.waitUntilExit()
     CPU.launch()
     let CPUdata = pipeCPU.fileHandleForReading.readDataToEndOfFile()
-    //let CPUString = String(data: CPUdata, encoding: String.Encoding.utf8)!
-    let CPUString = "machdep.cpu.brand_string: Intel(R) Core(TM) i3 CPU       M 380  @ 2.53GHz"
+    let CPUString = String(data: CPUdata, encoding: String.Encoding.utf8)!
     let CPUInfo = String(CPUString[CPUString.index(CPUString.startIndex, offsetBy: 26)..<CPUString.endIndex])
     //let CPUModel = CPUInfo.components(separatedBy: " ")[2].components(separatedBy: "-")[1]
     let CPUModel = CPUInfo.components(separatedBy: " ")[2]
