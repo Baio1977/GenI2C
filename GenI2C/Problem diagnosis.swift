@@ -23,20 +23,24 @@ func DiagnosisCPU() -> Bool {
     let CPUModel = CPUInfo.components(separatedBy: " ")[2]
     if (CPUModel.contains("-")){
         let CPUModel = CPUModel.components(separatedBy: "-")[1]
-    }
-    if CPUInfo.components(separatedBy: " ")[1].contains("Core") {
-        if (String(CPUModel).count > 5){
-            return true;
-        } else {
-            if Int(String(CPUModel[CPUModel.index(CPUModel.startIndex, offsetBy: 0)]))! < 4 {
-                return false
+        if CPUInfo.components(separatedBy: " ")[1].contains("Core") {
+            if (String(CPUModel).count > 5){
+                return true;
             } else {
-                return true
+                if Int(String(CPUModel[CPUModel.index(CPUModel.startIndex, offsetBy: 0)]))! < 4 {
+                    return false
+                } else {
+                    return true
+                }
             }
+        } else {
+            return false
         }
     } else {
         return false
     }
+
+
 }
 
 func DiagnosisAppleIntel() -> (Bool, Bool) {
@@ -266,3 +270,4 @@ func DiagnosisLog() -> (Bool, Bool, [String]) {
     }
     return (HaveError, HaveWarning, errors)
 }
+
