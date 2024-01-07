@@ -1,0 +1,41 @@
+# GenI2C Build & Release
+
+trigger:
+- master
+
+pool:
+  vmImage: 'macOS-10.14'
+
+steps:
+
+# Xcode Build
+- task: Xcode@5
+  inputs:
+    actions: 'build'
+    sdk: 'macosx10.14'
+    scheme: 'GenI2C'
+    configuration: 'Release'
+    xcodeVersion: '10'
+    args: 'CONFIGURATION_BUILD_DIR=../a'
+
+# Compress Output to zip
+- task: CmdLine@2
+  inputs:
+    script: 'cd ../a; zip -r GenI2C.zip *.app'
+
+# Get CFBundleShortVersionString
+- task: CmdLine@2
+  inputs:
+    script: cd ./;input=$(xcrun agvtool what-marketing-version);tmp=${input#*of \"};version=${tmp%\" in*};echo "##vso[task.setvariable variable=versiontag]$version"
+
+# Publish GitHub Release
+- task: GitHubRelease@0
+  inputs:
+    gitHubConnection: release
+    repositoryName: '$(Build.Repository.Name)'
+    action: 'edit'
+    target: '$(Build.SourceVersion)'
+    tagSource: 'manual'
+    tag: "v$(versiontag)"
+    assets: '$(Build.ArtifactStagingDirectory)/GenI2C.zip'
+    isDraft: true
