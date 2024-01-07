@@ -14,13 +14,13 @@ jobs:
     env:
       JOB_TYPE: BUILD
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
       - run: xcodebuild -configuration Debug
       - run: xcodebuild -configuration Release
 
       - name: Upload to Artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: Artifacts
           path: build/*/*.zip
