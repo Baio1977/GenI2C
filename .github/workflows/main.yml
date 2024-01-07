@@ -19,8 +19,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: actions/checkout@v3
-      - run: xcodebuild -jobs 1 -configuration Debug -arch x86_64
-      - run: xcodebuild -jobs 1 -configuration Release -arch x86_64
+      - run: xcodebuild -configuration Debug
+      - run: xcodebuild -configuration Release
 
       - name: Upload to Artifacts
         uses: actions/upload-artifact@v3
