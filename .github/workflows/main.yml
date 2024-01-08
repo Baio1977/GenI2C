@@ -23,7 +23,7 @@ jobs:
           # scheme: # optional
           # destination: # optional
           configuration: Debug
-          build-settings: -target GenI2C
+          #build-settings: -target GenI2C
           arch: X86_64
           action: build
       - name: Xcodebuild Release
@@ -32,7 +32,7 @@ jobs:
           project: GenI2C.xcodeproj
         # destination: # optional
           configuration: Release
-          build-settings: -target GenI2C
+          #build-settings: -target GenI2C
           arch: X86_64
           action: build
       - name: Upload to Artifacts
