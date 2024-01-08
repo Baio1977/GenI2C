@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7773AD592B4C062900E761CC /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7773AD582B4C062900E761CC /* AppKit.framework */; };
-		7773AD5B2B4C063200E761CC /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7773AD5A2B4C063200E761CC /* CoreFoundation.framework */; };
-		7773AD5D2B4C063F00E761CC /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7773AD5C2B4C063F00E761CC /* IOKit.framework */; };
+		7773AD5E2B4C079800E761CC /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7773AD582B4C062900E761CC /* AppKit.framework */; };
+		7773AD612B4C079A00E761CC /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7773AD5A2B4C063200E761CC /* CoreFoundation.framework */; };
+		7773AD632B4C079C00E761CC /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7773AD5C2B4C063F00E761CC /* IOKit.framework */; };
 		8B3271A9229A5E3D005FCBB7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3271A8229A5E3D005FCBB7 /* AppDelegate.swift */; };
 		8B3271AB229A5E3E005FCBB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B3271AA229A5E3E005FCBB7 /* Assets.xcassets */; };
 		8B3271AE229A5E3E005FCBB7 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B3271AC229A5E3E005FCBB7 /* MainMenu.xib */; };
@@ -68,9 +68,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7773AD5B2B4C063200E761CC /* CoreFoundation.framework in Frameworks */,
-				7773AD592B4C062900E761CC /* AppKit.framework in Frameworks */,
-				7773AD5D2B4C063F00E761CC /* IOKit.framework in Frameworks */,
+				7773AD5E2B4C079800E761CC /* AppKit.framework in Frameworks */,
+				7773AD612B4C079A00E761CC /* CoreFoundation.framework in Frameworks */,
+				7773AD632B4C079C00E761CC /* IOKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -509,9 +509,14 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MARKETING_VERSION = 1.3.3;
+				MERGED_BINARY_TYPE = automatic;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lhy.GenI2C;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
+				);
 			};
 			name = Debug;
 		};
@@ -529,9 +534,14 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MARKETING_VERSION = 1.3.3;
+				MERGED_BINARY_TYPE = automatic;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lhy.GenI2C;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
+				);
 			};
 			name = Release;
 		};
