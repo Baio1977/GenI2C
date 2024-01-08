@@ -45,18 +45,13 @@ jobs:
       - name: Create DMG image
         run: |
           brew install create-dmg
-          create-dmg --no-internet-enable --sandbox-safe --window-size 450 450 build/GenI2C-App-Debug.dmg build/Debug-App/
-          create-dmg --no-internet-enable --sandbox-safe --window-size 450 450 build/GenI2C-App-Release.dmg build/Release-App/
-      - name: Upload debug app
+          export VERSION=/usr/libexec/PlistBuddy -c "Print CFBundleShortVersionString" build/Release/GenI2C.app/Contents/Info.plist
+          create-dmg --no-internet-enable --sandbox-safe --window-size 450 450 build/GenI2C-$VERSION-Debug.dmg build/Debug-App/
+          create-dmg --no-internet-enable --sandbox-safe --window-size 450 450 build/GenI2C-$VERSION-Release.dmg build/Release-App/
+      - name: Upload app
         uses: actions/upload-artifact@v3
         with:
-          name: GenI2C-App-Debug
-          path: build/GenI2C-App-Debug.dmg
-      - name: Upload release app
-        uses: actions/upload-artifact@v3
-        with:
-          name: GenI2C-App-Release
-          path: build/GenI2C-App-Release.dmg
+          path: build/*.dmg
       #- name: Upload to Artifacts
       #  uses: actions/upload-artifact@v3
       #  with:
