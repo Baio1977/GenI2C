@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7773AD592B4C062900E761CC /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7773AD582B4C062900E761CC /* AppKit.framework */; };
+		7773AD5B2B4C063200E761CC /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7773AD5A2B4C063200E761CC /* CoreFoundation.framework */; };
+		7773AD5D2B4C063F00E761CC /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7773AD5C2B4C063F00E761CC /* IOKit.framework */; };
 		8B3271A9229A5E3D005FCBB7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3271A8229A5E3D005FCBB7 /* AppDelegate.swift */; };
 		8B3271AB229A5E3E005FCBB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B3271AA229A5E3E005FCBB7 /* Assets.xcassets */; };
 		8B3271AE229A5E3E005FCBB7 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B3271AC229A5E3E005FCBB7 /* MainMenu.xib */; };
@@ -38,6 +41,9 @@
 
 /* Begin PBXFileReference section */
 		50DE26ED22B3446100B87104 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.strings"; sourceTree = "<group>"; };
+		7773AD582B4C062900E761CC /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		7773AD5A2B4C063200E761CC /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		7773AD5C2B4C063F00E761CC /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		8B3271A5229A5E3D005FCBB7 /* GenI2C.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GenI2C.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B3271A8229A5E3D005FCBB7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8B3271AA229A5E3E005FCBB7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -62,6 +68,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7773AD5B2B4C063200E761CC /* CoreFoundation.framework in Frameworks */,
+				7773AD592B4C062900E761CC /* AppKit.framework in Frameworks */,
+				7773AD5D2B4C063F00E761CC /* IOKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +91,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7773AD572B4C062900E761CC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7773AD5C2B4C063F00E761CC /* IOKit.framework */,
+				7773AD5A2B4C063200E761CC /* CoreFoundation.framework */,
+				7773AD582B4C062900E761CC /* AppKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8B32719C229A5E3D005FCBB7 = {
 			isa = PBXGroup;
 			children = (
@@ -90,6 +109,7 @@
 				8B3271B8229A5E3E005FCBB7 /* GenI2CTests */,
 				8B3271C3229A5E3E005FCBB7 /* GenI2CUITests */,
 				8B3271A6229A5E3D005FCBB7 /* Products */,
+				7773AD572B4C062900E761CC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
