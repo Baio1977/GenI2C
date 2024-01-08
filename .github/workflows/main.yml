@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Create XCFramework
-        uses: unsignedapps/swift-create-xcframework@v2
+        uses: unsignedapps/swift-create-xcframework@v2.3.0
       - name: Xcodebuild Debug
         uses: sersoft-gmbh/xcodebuild-action@v1
         with:
