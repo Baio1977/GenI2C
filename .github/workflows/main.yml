@@ -15,8 +15,6 @@ jobs:
       JOB_TYPE: BUILD
     steps:
       - uses: actions/checkout@v3
-      - name: Create XCFramework
-        uses: unsignedapps/swift-create-xcframework@v2.3.0
       - name: Xcodebuild Debug
         uses: sersoft-gmbh/xcodebuild-action@v1
         with:
@@ -36,6 +34,29 @@ jobs:
           #build-settings: -target GenI2C
           arch: x86_64
           action: build
+      - name: Prepare release image
+        run: |
+           mkdir build/Release-App
+           mv build/Release/GenI2C.app build/Release-App/
+      - name: Prepare debug image
+        run: |
+          mkdir build/Debug-App
+          mv build/Debug/GenI2C.app build/Debug-App/
+      - name: Create DMG image
+        run: |
+          brew install create-dmg
+          create-dmg --no-internet-enable --sandbox-safe --window-size 450 450 build/GenI2C-App-Debug.dmg build/Debug-App/
+          create-dmg --no-internet-enable --sandbox-safe --window-size 450 450 build/GenI2C-App-Release.dmg build/Release-App/
+      - name: Upload debug app
+        uses: actions/upload-artifact@v3
+        with:
+          name: GenI2C-App-Debug
+          path: build/GenI2C-App-Debug.dmg
+      - name: Upload release app
+        uses: actions/upload-artifact@v3
+        with:
+          name: GenI2C-App-Release
+          path: build/GenI2C-App-Release.dmg
       - name: Upload to Artifacts
         uses: actions/upload-artifact@v3
         with:
