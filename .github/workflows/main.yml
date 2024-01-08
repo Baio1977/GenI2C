@@ -45,7 +45,7 @@ jobs:
       - name: Create DMG image
         run: |
           brew install create-dmg
-          export VERSION=$'/usr/libexec/PlistBuddy -c "Print CFBundleShortVersionString" build/Release-App/GenI2C.app/Contents/Info.plist'
+          export VERSION=$(/usr/libexec/PlistBuddy -c "Print CFBundleShortVersionString" build/Release-App/GenI2C.app/Contents/Info.plist)
           echo $VERSION
           create-dmg --no-internet-enable --sandbox-safe --window-size 450 450 build/GenI2C-App-Debug.dmg build/Debug-App/
           create-dmg --no-internet-enable --sandbox-safe --window-size 450 450 build/GenI2C-App-Release.dmg build/Release-App/
