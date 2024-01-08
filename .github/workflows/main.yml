@@ -24,6 +24,7 @@ jobs:
           # destination: # optional
           configuration: Debug
           build-settings: -target GenI2C
+          arch: X86_64
           action: build
       - name: Xcodebuild Release
         uses: sersoft-gmbh/xcodebuild-action@v1
@@ -32,6 +33,7 @@ jobs:
         # destination: # optional
           configuration: Release
           build-settings: -target GenI2C
+          arch: X86_64
           action: build
       - name: Upload to Artifacts
         uses: actions/upload-artifact@v3
