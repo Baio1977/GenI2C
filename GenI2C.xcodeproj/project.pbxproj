@@ -37,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		50DE26ED22B3446100B87104 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.strings"; sourceTree = "<group>"; };
 		8B3271A5229A5E3D005FCBB7 /* GenI2C.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GenI2C.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B3271A8229A5E3D005FCBB7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8B3271AA229A5E3E005FCBB7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -54,7 +55,6 @@
 		8B355DB522B5400100BB042B /* maclog */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = maclog; sourceTree = "<group>"; };
 		8B511CC022C9B01E0082ED70 /* GenReadme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenReadme.swift; sourceTree = "<group>"; };
 		8BB738DD22C65B430071A5D1 /* Problem diagnosis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Problem diagnosis.swift"; sourceTree = "<group>"; };
-		DF4AA8E92B4B6D9B00414F83 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenu.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -341,7 +341,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				8B3271AD229A5E3E005FCBB7 /* Base */,
-				DF4AA8E92B4B6D9B00414F83 /* en */,
+				50DE26ED22B3446100B87104 /* zh-Hans */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
