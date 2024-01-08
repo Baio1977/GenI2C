@@ -15,8 +15,6 @@ jobs:
       JOB_TYPE: BUILD
     steps:
       - uses: actions/checkout@v3
-      - name: Create XCFramework
-        uses: unsignedapps/swift-create-xcframework@v2.3.0
       - name: Xcodebuild Debug
         uses: sersoft-gmbh/xcodebuild-action@v1
         with:
@@ -36,16 +34,35 @@ jobs:
           #build-settings: -target GenI2C
           arch: x86_64
           action: build
-      - name: Upload to Artifacts
+      - name: Prepare release image
+        run: |
+           mkdir build/Release-App
+           mv build/Release/GenI2C.app build/Release-App/
+      - name: Prepare debug image
+        run: |
+          mkdir build/Debug-App
+          mv build/Debug/GenI2C.app build/Debug-App/
+      - name: Create DMG image
+        run: |
+          brew install create-dmg
+          export VERSION=$(/usr/libexec/PlistBuddy -c "Print CFBundleShortVersionString" build/Release-App/GenI2C.app/Contents/Info.plist)
+          echo $VERSION
+          create-dmg --no-internet-enable --sandbox-safe --window-size 450 450 build/GenI2C-${VERSION}-Debug.dmg build/Debug-App/
+          create-dmg --no-internet-enable --sandbox-safe --window-size 450 450 build/GenI2C-${VERSION}-Release.dmg build/Release-App/
+      - name: Upload app
         uses: actions/upload-artifact@v3
         with:
-          name: Artifacts
-          path: build/*/*.zip
+          path: build/*.dmg
+      #- name: Upload to Artifacts
+      #  uses: actions/upload-artifact@v3
+      #  with:
+      #    name: Artifacts
+      #    path: build/*/*.zip
       - name: Upload to Release
         if: github.event_name == 'release'
         uses: svenstaro/upload-release-action@e74ff71f7d8a4c4745b560a485cc5fdb9b5b999d
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: build/*/*.zip
+          file: build/*.dmg
           tag: ${{ github.ref }}
           file_glob: true     
