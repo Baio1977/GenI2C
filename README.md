@@ -3,7 +3,7 @@
 
 ## Action Build
 [
-👉 [![Release](https://img.shields.io/badge/actions/Baio1977/GenI2C.svg)](https://github.com/Baio1977/GenI2C/actions)
+👉 https://github.com/Baio1977/GenI2C/actions
 
 ## Download
 
