@@ -3,7 +3,7 @@
 
 ## Action Build
 [
-👉 [!](https://github.com/Baio1977/GenI2C/actions)
+👉 [![Release]](https://github.com/Baio1977/GenI2C/actions)
 
 ## Download
 
