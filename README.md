@@ -2,8 +2,8 @@
 [![](https://img.shields.io/badge/Telegram-HackintoshLifeIT-informational?style=flat&logo=telegram&logoColor=white&color=5fb659)](https://t.me/HackintoshLife_it)
 
 ## Action Build
-[
-👉 [![Release]](https://github.com/Baio1977/GenI2C/actions)
+
+👉 [![Actions Buid]](https://github.com/Baio1977/GenI2C/actions)
 
 ## Download
 
