@@ -3,7 +3,7 @@
 
 ## Action Build
 
-👉 [![Actions Buid]](https://github.com/Baio1977/GenI2C/actions/workflows/WORKFLOW-FILE/badge.svg)(https://github.com/Baio1977/GenI2C/actions)
+👉 [![Actions Buid](https://github.com/Baio1977/GenI2C/actions/workflows/WORKFLOW-FILE/badge.svg)](https://github.com/Baio1977/GenI2C/actions)
 
 ## Download
 
