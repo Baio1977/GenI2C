@@ -3,9 +3,9 @@
 
 ## Download
 
-👉 [![Actions](https://img.shields.io/badge/Latest_Builds_Actions-informational?style=flat&logo=actions&logoColor=white&color=ed1965)](https://github.com/Baio1977/GenI2C/actions)
-
 👉 [![Release](https://img.shields.io/github/release/Baio1977/GenI2C.svg)](https://github.com/Baio1977/GenI2C/releases)
+
+👉 [![Actions](https://img.shields.io/badge/Latest_Builds_Actions-informational?style=flat&logo=actions&logoColor=white&color=ed1965)](https://github.com/Baio1977/GenI2C/actions)
 
 # GenI2C_Refresh
 
