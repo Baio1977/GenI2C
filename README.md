@@ -4,6 +4,7 @@
 ## Download
 
 👉 [![Release](https://img.shields.io/github/release/Baio1977/GenI2C.svg)](https://github.com/Baio1977/GenI2C/releases)
+
 👉 [![CI](https://github.com/Baio1977/GenI2C/actions/workflows/main.yml/badge.svg)](https://github.com/Baio1977/GenI2C/actions/workflows/main.yml)
 
 # GenI2C
