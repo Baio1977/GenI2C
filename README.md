@@ -3,7 +3,7 @@
 
 ## Action Build
 
-👉 [![Actions](https://github.com/Baio1977/GenI2C/actions/workflows/WORKFLOW-FILE/badge.svg)](https://github.com/Baio1977/GenI2C/actions)
+👉 [![Actions](https://img.shields.io/badge/Telegram-HackintoshLifeIT-informational?style=flat&logo=telegram&logoColor=white&color=5fb659)](https://github.com/Baio1977/GenI2C/actions)
 
 ## Download
 
