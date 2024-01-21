@@ -7,7 +7,7 @@
 
 👉 [![Actions](https://img.shields.io/badge/Latest_Builds_Actions-informational?style=flat&logo=actions&logoColor=white&color=ed1965)](https://github.com/Baio1977/GenI2C/actions)
 
-# GenI2C_Refresh
+# GenI2C
 
 Generate SSDT hotpatches for your Touchable Device and get ready for VoodooI2C! 😜
 
@@ -56,8 +56,8 @@ This software is released under the [MIT License](/LICENSE)
 - Steve Zheng [(@stevezhengshiqi)](https://github.com/stevezhengshiqi) for testing and bug reporting
 - http://patorjk.com for the amazing ASCII Art font `Impossible`
 
-## GenI2C_Refresh Credits
+## GenI2C credits evolution 2024
 
-- Baio1977 [(@Baio1977)](https://github.com/Baio1977) for resuming development and compatibility with Opencore Bootloader
-- Lorys89 [(@Lorys89)](https://github.com/Lorys89) for development, support and immense developer qualities
-- Massimiliano [(@mbarbierato)](https://github.com/mbarbierato) for development, support and various code fixes
+- Massimiliano [(@mbarbierato)](https://github.com/mbarbierato) All this was possible.
+- Baio1977 [(@Baio1977)](https://github.com/Baio1977) for resuming development , compatibility with Opencore Bootloader , SSDT-TPAD compilation fix bug , edit readme file and much more.
+- Lorys89 [(@Lorys89)](https://github.com/Lorys89) for development, support and immense developer qualities.
