@@ -3,7 +3,7 @@
 
 ## Action Build
 
-👉 [![Actions](https://img.shields.io/badge/ActionsBuilds-informational?style=flat&logo=actions&logoColor=white&color=5fb659)](https://github.com/Baio1977/GenI2C/actions)
+👉 [![Actions](https://img.shields.io/badge/LatestBuildsActions-informational?style=flat&logo=actions&logoColor=white&color=5fb659)](https://github.com/Baio1977/GenI2C/actions)
 
 ## Download
 
