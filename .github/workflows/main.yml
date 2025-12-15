@@ -50,11 +50,11 @@ jobs:
           create-dmg --no-internet-enable --sandbox-safe --window-size 450 450 build/GenI2C-${VERSION}-Debug.dmg build/Debug-App/
           create-dmg --no-internet-enable --sandbox-safe --window-size 450 450 build/GenI2C-${VERSION}-Release.dmg build/Release-App/
       - name: Upload app
-        uses: actions/upload-artifact@v5.0.0
+        uses: actions/upload-artifact@v6.0.0
         with:
           path: build/*.dmg
       #- name: Upload to Artifacts
-      #  uses: actions/upload-artifact@v5.0.0
+      #  uses: actions/upload-artifact@v6.0.0
       #  with:
       #    name: Artifacts
       #    path: build/*/*.zip
