@@ -60,7 +60,7 @@ jobs:
       #    path: build/*/*.zip
       - name: Upload to Release
         if: github.event_name == 'release'
-        uses: svenstaro/upload-release-action@6b7fa9f267e90b50a19fef07b3596790bb941741
+        uses: svenstaro/upload-release-action@29e53e917877a24fad85510ded594ab3c9ca12de
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: build/*.dmg
